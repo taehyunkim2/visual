@@ -21,7 +21,7 @@ for (i in 1:9)
   # OJ_YY   = "OJ_YY=2010"
   FSCL_YY    = "FSCL_YY=2019"
   OFFC_NM   = "OFFC_NM=기획재정부"
-  url = paste0(url0, api_key, type, pIndex, pSize, FSCL_YY)
+    url = paste0(url0, api_key, type, pIndex, pSize, FSCL_YY)
   temp <- read_xml(url)
   
   temp0 <- xmlParse(temp)
