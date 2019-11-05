@@ -9,6 +9,15 @@ type <- "type=xml"
 key <- "ServiceKey=g3u9mtatQk1WgFWX422IbwkDnonkLeyMgAacog%2BdzYTWYlgqmmMILctpdfeM089nqtAZKlgmHsBuYewwDR0fmw%3D%3D"
 sido <- "sidoName=서울"
 cond <- "searchCondition=DAILY"
-url <- paste0(url0, "?", type, "&", key, "&", sido, "&", cond)
+nor <- "numOfRows=25"
+url <- paste0(url0, "?", type, "&", key, "&", sido, "&", cond, "&", nor)
 
-res <- xmlParse(read_xml(url, encoding="ko_KR.UTF-8"), encoding="ko_KR.UTF-8")
+res <- read_xml(url) %>% xmlParse()
+
+resdata <- getNodeSet(res,"//item") %>% xmlToDataFrame(stringsAsFactors = F)
+resdata[resdata == "-"] <- NA
+resdata[, 7] <- as.numeric(resdata[, 7])
+resdata[, 9] <- 1:25
+treemap(resdata, index="cityName", vSize="pm10Value", type="index",fontfamily.labels = "NanumBarunGothic")
+treemap(resdata)
+str(resdata)
