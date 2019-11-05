@@ -11,10 +11,4 @@ sido <- "sidoName=서울"
 cond <- "searchCondition=DAILY"
 url <- paste0(url0, "?", type, "&", key, "&", sido, "&", cond)
 
-
 res <- xmlParse(read_xml(url, encoding="ko_KR.UTF-8"), encoding="ko_KR.UTF-8")
-?xmlParse
-
-res <- read_xml(url, encoding="ko_KR.UTF-8")
-class(res)
-res2 <- xmlTreeParse(url)
