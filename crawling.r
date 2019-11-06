@@ -19,3 +19,5 @@ resdata[resdata == "-"] <- NA
 resdata[, 7] <- as.numeric(resdata[, 7])
 
 treemap(resdata, index="cityName", vSize="pm10Value", type="value")
+
+class(resdata[,2])
